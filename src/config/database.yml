@@ -16,7 +16,7 @@ default: &default
   username: root
   password: password
   # docker-composeのdepends_onのところ
-  host: db
+  host: <%= ENV.fetch("APP_DATABASE_HOST") { 'db' } %>
 
 development:
   <<: *default
@@ -56,4 +56,3 @@ production:
   password: <%= ENV['APP_DATABASE_PASSWORD'] %>
   host: <%= ENV['APP_DATABASE_HOST'] %>
 
-  
